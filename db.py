@@ -5,7 +5,6 @@ DB_PATH = Path(__file__).parent / "magazyn.db"
 
 ITEMY = [
     ("Gotówka", "💵"),
-    ("WM 29", "🔫"),
     ("HK P7 M10", "🔫"),
     ("Ghost Gun", "🔫"),
     ("Heckler & Koch P7", "🔫"),
@@ -38,6 +37,12 @@ ITEMY = [
     ("Ammo 12 Gauge", "📦"),
     ("Ammo 7.62", "📦"),
     ("Ammo 5.56", "📦"),
+    ("Tlumnik 01", "💀"),
+    ("Tlumnik", "💀"),
+    ("Powiekszony magazynek", "💀"),
+    ("Magazynek bebenkowy", "💀"),
+    ("Celownik do broni", "💀"),
+    ("Uchwyt do broni", "💀")
 ]
 
 NAZWY_ITEMOW = [nazwa for nazwa, _ in ITEMY]
@@ -116,7 +121,7 @@ def zmien_ilosc(guild_id, user_id, user_tag, nazwa, delta):
     return (True, nowa)
 
 
-def get_historia(guild_id: int, limit: int = 10):
+def get_historia(guild_id: int, limit: int = 30):
     conn = polacz()
     rows = conn.execute(
         """SELECT user_tag, nazwa, zmiana, ilosc_po, czas
