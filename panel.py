@@ -54,7 +54,10 @@ class MagazynView(discord.ui.View):
             znak = "➕" if r["zmiana"] > 0 else "➖"
             linie.append(f"{znak} **{r['user_tag']}** — {r['nazwa']}: "
                          f"{r['zmiana']:+} (stan: {r['ilosc_po']}) · {r['czas']}")
-        await interaction.response.send_message("\n".join(linie), ephemeral=True)
+        opis = "\n".join(linie)[:4000]
+        embed = discord.Embed(title="📜 Historia (ostatnie 30)",
+                              description=opis, color=0x2b2d31)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
     @discord.ui.button(label="Odśwież", emoji="🔄",
                        style=discord.ButtonStyle.secondary, custom_id="mag_odswiez")
