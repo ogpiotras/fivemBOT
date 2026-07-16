@@ -45,7 +45,7 @@ class MagazynView(discord.ui.View):
     @discord.ui.button(label="Historia", emoji="📜",
                        style=discord.ButtonStyle.secondary, custom_id="mag_historia")
     async def historia(self, interaction, button):
-        rows = db.get_historia(interaction.guild_id, 10)
+        rows = db.get_historia(interaction.guild_id, 30)
         if not rows:
             await interaction.response.send_message("Brak operacji.", ephemeral=True)
             return
