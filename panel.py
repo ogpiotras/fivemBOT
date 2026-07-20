@@ -54,7 +54,7 @@ class MagazynView(discord.ui.View):
         for r in rows:
             znak = "➕" if r["zmiana"] > 0 else "➖"
 
-            powod_txt = f" 📝 *{r['powod']}*" if r['powod'] else ""
+            powod_txt = f" *{r['powod']}*" if r['powod'] else ""
 
             linie.append(f"{znak} **{r['user_tag']}** — {r['nazwa']}: "
                          f"{r['zmiana']:+} (stan: {r['ilosc_po']}){powod_txt} · {r['czas']}")
