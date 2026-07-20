@@ -5,6 +5,7 @@ DB_PATH = Path(__file__).parent / "magazyn.db"
 
 ITEMY = [
     ("Gotówka", "💵"),
+    ("Proch", "🧨"),
     ("HK P7 M10", "🔫"),
     ("Ghost Gun", "🔫"),
     ("Heckler & Koch P7", "🔫"),
@@ -42,7 +43,13 @@ ITEMY = [
     ("Powiekszony magazynek", "💀"),
     ("Magazynek bebenkowy", "💀"),
     ("Celownik do broni", "💀"),
-    ("Uchwyt do broni", "💀")
+    ("LSD Hefalump", "💊"),
+    ("LSD Tromba", "💊"),
+    ("Fentanyl", "💊"),
+    ("Blue Monarch", "💊"),
+    ("Crack", "💊"),
+    ("Koks 100%", "💊"),
+    ("Koks 70%", "💊")
 ]
 
 NAZWY_ITEMOW = [nazwa for nazwa, _ in ITEMY]
