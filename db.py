@@ -6,6 +6,7 @@ DB_PATH = Path(__file__).parent / "magazyn.db"
 ITEMY = [
     ("Gotówka", "💵"),
     ("Proch", "🧨"),
+    ("Liscie koki", "🍃"),
     ("HK P7 M10", "🔫"),
     ("Ghost Gun", "🔫"),
     ("Heckler & Koch P7", "🔫"),
