@@ -80,6 +80,7 @@ def init_db():
             nazwa     TEXT    NOT NULL,
             zmiana    INTEGER NOT NULL,
             ilosc_po  INTEGER NOT NULL,
+            powod TEXT,
             czas      TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
         )
     """)
@@ -97,7 +98,7 @@ def get_stan(guild_id: int) -> dict:
     return {nazwa: z_bazy.get(nazwa, 0) for nazwa in NAZWY_ITEMOW}
 
 
-def zmien_ilosc(guild_id, user_id, user_tag, nazwa, delta):
+def zmien_ilosc(guild_id, user_id, user_tag, nazwa, delta, powod=None):
     if nazwa not in NAZWY_ITEMOW:
         return (False, None)
 
@@ -119,9 +120,9 @@ def zmien_ilosc(guild_id, user_id, user_tag, nazwa, delta):
         (guild_id, nazwa, nowa),
     )
     conn.execute(
-        """INSERT INTO historia (guild_id, user_id, user_tag, nazwa, zmiana, ilosc_po)
-           VALUES (?, ?, ?, ?, ?, ?)""",
-        (guild_id, user_id, user_tag, nazwa, delta, nowa),
+        """INSERT INTO historia (guild_id, user_id, user_tag, nazwa, zmiana, ilosc_po, powod)
+           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+        (guild_id, user_id, user_tag, nazwa, delta, nowa, powod),
     )
     conn.commit()
     conn.close()
@@ -131,7 +132,7 @@ def zmien_ilosc(guild_id, user_id, user_tag, nazwa, delta):
 def get_historia(guild_id: int, limit: int = 30):
     conn = polacz()
     rows = conn.execute(
-        """SELECT user_tag, nazwa, zmiana, ilosc_po, czas
+        """SELECT user_tag, nazwa, zmiana, ilosc_po, powod, czas
            FROM historia WHERE guild_id = ?
            ORDER BY id DESC LIMIT ?""",
         (guild_id, limit),
