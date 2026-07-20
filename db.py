@@ -84,6 +84,14 @@ def init_db():
             czas      TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
         )
     """)
+
+    cursor = conn.execute("PRAGMA table_info(historia)")
+    kolumny = [row["name"] for row in cursor.fetchall()]
+
+    if "powod" not in kolumny:
+        print("Migracja bazy: Dodaję brakującą kolumnę 'powod'...")
+        conn.execute("ALTER TABLE historia ADD COLUMN powod TEXT")
+
     conn.commit()
     conn.close()
 
