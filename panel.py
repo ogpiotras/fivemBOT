@@ -2,7 +2,7 @@ import discord
 import db
 
 def _kat(emoji):
-    return {"🔫": "Broń", "📦": "Amunicja", "💀": "Dodatki"}.get(emoji, "Inne")
+    return {"🔫": "Broń", "📦": "Amunicja", "💀": "Dodatki", "💊": "Dragi"}.get(emoji, "Inne")
 
 KATEGORIE = {}
 for _nazwa, _emoji in db.ITEMY:
