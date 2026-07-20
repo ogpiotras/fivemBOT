@@ -64,6 +64,12 @@ class MagazynView(discord.ui.View):
                               description=opis, color=0x2b2d31)
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
+    @discord.ui.button(label="Odśwież", emoji="🔄",
+                       style=discord.ButtonStyle.secondary, custom_id="mag_odswiez")
+    async def odswiez(self, interaction, button):
+        await interaction.response.edit_message(
+            embed=buduj_embed(interaction.guild_id), view=self)
+
 
 class KategoriaView(discord.ui.View):
     def __init__(self, tryb, panel_msg):

@@ -43,6 +43,7 @@ ITEMY = [
     ("Powiekszony magazynek", "💀"),
     ("Magazynek bebenkowy", "💀"),
     ("Celownik do broni", "💀"),
+    ("Celownik holo", "💀"),
     ("LSD Hefalump", "💊"),
     ("LSD Tromba", "💊"),
     ("Fentanyl", "💊"),
