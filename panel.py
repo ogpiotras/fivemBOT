@@ -122,7 +122,7 @@ class IloscModal(discord.ui.Modal):
 
         self.pole_powod = discord.ui.TextInput(
             label="Powód (opcjonalnie)",
-            placeholder="np. Wydane dla rekruta...",
+            placeholder="np. Dla pierdolonego komucha...",
             style=discord.TextStyle.short,
             required=False,
             max_length=150
